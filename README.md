@@ -19,7 +19,7 @@
   <br />
   <br />
 
-  [🌐 ชมเว็บไซต์ตัวอย่าง (Live Demo)](https://somsri-todo-frontend.vercel.app/) • [⚡ รายงานปัญหา (Report Bug)](https://github.com/your-username/your-repo/issues)
+  [🌐 ชมเว็บไซต์ตัวอย่าง (Live Demo)](https://somsri-todo-frontend.vercel.app/) • [⚡ รายงานปัญหา (Report Bug)](https://github.com/SterduckPedNoi)
 
 </div>
 
@@ -99,3 +99,49 @@
 ```bash
 git clone [https://github.com/your-username/somsri-todo-frontend.git](https://github.com/your-username/somsri-todo-frontend.git)
 cd somsri-todo-frontend
+```
+
+### 2. ติดตั้ง Dependencies
+```bash
+npm install
+```
+
+### 3. กำหนดค่า Environment Variables
+สร้างไฟล์ `.env` ที่โฟลเดอร์ root ของโปรเจกต์:
+```env
+# URL สำหรับเชื่อมต่อไปยัง Backend API
+VITE_API_BASE_URL=[http://127.0.0.1:3333/api](http://127.0.0.1:3333/api)
+```
+*(หากไม่ได้ระบุ ระบบจะใช้ค่าเริ่มต้นเป็น `http://127.0.0.1:3333/api`)*
+
+### 4. รันโปรเจกต์ในโหมด Development
+```bash
+npm run dev
+```
+เปิดเบราว์เซอร์ไปที่: `http://localhost:5173/`
+
+### 5. คำสั่งเพิ่มเติม
+```bash
+# ตรวจสอบ Type ด้วย TypeScript
+npm run type-check
+
+# Build สำหรับ Production
+npm run build
+
+# ทดสอบรันไฟล์ที่ Build แล้ว (Preview)
+npm run preview
+```
+
+---
+
+## 👤 จัดทำโดย (Author)
+
+* **Developer:** Yuttapat Na Nakornpanom
+* **Backend Repo:** [https://github.com/SterduckPedNoi/somsri-todo-backend](https://github.com/SterduckPedNoi/Somsri-Todo-Backend)
+* **Portfolio / GitHub:** [@SterduckPedNoi](https://github.com/SterduckPedNoi)
+* **Live Demo:** [https://somsri-todo-frontend.vercel.app/](https://somsri-todo-frontend.vercel.app/)
+
+---
+<div align="center">
+  <sub>Crafted with passion for clean code and tactile design.</sub>
+</div>
