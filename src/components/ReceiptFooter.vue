@@ -291,4 +291,38 @@ const emit = defineEmits<{
   color: #444;
   margin-top: 6px;
 }
+
+@media (max-width: 640px), (pointer: coarse) {
+  .filter-group {
+    gap: 8px;
+  }
+
+  .filter-btn {
+    padding: 6px 10px;
+    font-size: 11.5px;
+    min-height: 36px;
+    border: 1px dashed rgba(0, 0, 0, 0.15);
+    border-radius: 4px;
+    background: rgba(0, 0, 0, 0.02);
+  }
+
+  .filter-btn:active {
+    background: rgba(0, 0, 0, 0.12);
+    transform: scale(0.95);
+  }
+
+  .clear-btn {
+    padding: 7px 14px;
+    font-size: 11px;
+    min-height: 38px;
+    border-radius: 4px;
+    background: rgba(0, 0, 0, 0.03);
+  }
+
+  .clear-btn:active {
+    background: rgba(220, 38, 38, 0.15);
+    color: #dc2626;
+    transform: scale(0.95);
+  }
+}
 </style>

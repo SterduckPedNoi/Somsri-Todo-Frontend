@@ -63,11 +63,13 @@ const onKeyDown = (e: KeyboardEvent) => {
       class="checkbox-btn" 
       @click="emit('toggle', todo.id)"
       :aria-label="todo.is_completed ? 'Mark as incomplete' : 'Mark as completed'"
+      :title="todo.is_completed ? 'คลิกเพื่อยกเลิกขีดฆ่า (Click to uncheck)' : 'คลิกเพื่อขีดฆ่าปากกา (Click to strike through)'"
       type="button"
     >
       <span class="bracket">[</span>
       <span class="mark" :class="{ 'checked': todo.is_completed }">
         {{ todo.is_completed ? 'x' : ' ' }}
+        <span v-if="!todo.is_completed" class="ghost-hover-mark">✓</span>
       </span>
       <span class="bracket">]</span>
     </button>
@@ -77,7 +79,7 @@ const onKeyDown = (e: KeyboardEvent) => {
         <div 
           class="todo-title-wrapper" 
           @click="emit('toggle', todo.id)"
-          :title="'Double-click to edit'"
+          :title="todo.is_completed ? 'คลิกเพื่อยกเลิกขีดฆ่า · ดับเบิลคลิกเพื่อแก้ไข' : 'คลิกเพื่อขีดฆ่าปากกา · ดับเบิลคลิกเพื่อแก้ไข'"
         >
           <span class="todo-title">{{ todo.title }}</span>
           <PenStrike v-if="todo.is_completed" :id="todo.id" :title="todo.title" />
@@ -148,10 +150,10 @@ const onKeyDown = (e: KeyboardEvent) => {
 }
 
 .checkbox-btn {
-  background: none;
-  border: none;
-  padding: 0;
-  margin-top: 1px;
+  background: transparent;
+  border: 1px solid transparent;
+  padding: 1px 3px;
+  margin-top: 0;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
@@ -161,18 +163,51 @@ const onKeyDown = (e: KeyboardEvent) => {
   color: #111;
   flex-shrink: 0;
   outline: none;
+  border-radius: 3px;
+  transition: all 0.15s ease;
+}
+
+.checkbox-btn:hover {
+  background: rgba(35, 86, 150, 0.08);
+  border-color: rgba(35, 86, 150, 0.3);
 }
 
 .bracket {
   color: #333;
+  transition: color 0.15s;
+}
+
+.checkbox-btn:hover .bracket {
+  color: #1c4d8c;
 }
 
 .mark {
+  position: relative;
   display: inline-block;
   width: 14px;
   text-align: center;
   color: #111;
   font-weight: 700;
+}
+
+.ghost-hover-mark {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  text-align: center;
+  color: #235696;
+  opacity: 0;
+  transform: scale(0.85);
+  transition: all 0.15s ease;
+  pointer-events: none;
+  font-weight: 700;
+}
+
+.checkbox-btn:hover .ghost-hover-mark,
+.receipt-item:hover .checkbox-btn .ghost-hover-mark {
+  opacity: 0.65;
+  transform: scale(1);
 }
 
 .mark.checked {
@@ -195,6 +230,17 @@ const onKeyDown = (e: KeyboardEvent) => {
   word-break: break-word;
   overflow-wrap: anywhere;
   max-width: 100%;
+  border-radius: 2px;
+  padding: 0 2px;
+  transition: background 0.15s ease;
+}
+
+.todo-title-wrapper:hover {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.todo-title-wrapper:hover .todo-title {
+  color: #000;
 }
 
 .todo-title {
@@ -237,7 +283,7 @@ const onKeyDown = (e: KeyboardEvent) => {
   display: flex;
   align-items: center;
   gap: 4px;
-  opacity: 0;
+  opacity: 0.35;
   transition: opacity 0.15s ease;
   flex-shrink: 0;
   margin-top: 2px;
@@ -248,9 +294,9 @@ const onKeyDown = (e: KeyboardEvent) => {
   opacity: 1;
 }
 
-@media (hover: none) {
+@media (hover: none), (max-width: 640px) {
   .item-actions {
-    opacity: 0.7;
+    opacity: 0.85;
   }
 }
 
@@ -279,5 +325,70 @@ const onKeyDown = (e: KeyboardEvent) => {
 
 .action-btn.check:hover {
   color: #16a34a;
+}
+
+@media (max-width: 640px), (pointer: coarse) {
+  .receipt-item {
+    padding: 8px 4px;
+    gap: 8px;
+  }
+
+  .checkbox-btn {
+    min-width: 38px;
+    min-height: 38px;
+    padding: 4px 6px;
+    font-size: 16px;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 5px;
+    background: rgba(0, 0, 0, 0.025);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .checkbox-btn:active {
+    background: rgba(35, 86, 150, 0.16);
+    border-color: #1c4d8c;
+    transform: scale(0.94);
+  }
+
+  .todo-content {
+    padding-top: 5px;
+  }
+
+  .todo-title {
+    font-size: 16px;
+    line-height: 1.4;
+  }
+
+  .todo-title-wrapper:active {
+    background: rgba(0, 0, 0, 0.08);
+  }
+
+  .item-actions {
+    opacity: 1 !important;
+    gap: 5px;
+    padding-top: 2px;
+  }
+
+  .action-btn {
+    min-width: 36px;
+    min-height: 36px;
+    padding: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 5px;
+    background: rgba(0, 0, 0, 0.03);
+    color: #333;
+  }
+
+  .action-btn:active {
+    background: rgba(0, 0, 0, 0.14);
+    transform: scale(0.92);
+  }
+
+  .action-btn.delete:active {
+    background: rgba(220, 38, 38, 0.15);
+    color: #dc2626;
+  }
 }
 </style>

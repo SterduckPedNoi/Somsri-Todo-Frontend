@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted } from 'vue'
-import { ChevronLeft } from 'lucide-vue-next'
+import { Folder } from 'lucide-vue-next'
 import { soundService } from '../utils/sound'
 
 const props = withDefaults(
@@ -63,10 +63,10 @@ const formattedDate = computed(() => {
         class="back-btn" 
         @click="handleBack"
         type="button"
-        title="Go back to All Lists"
+        title="สลับหรือจัดการรายการอื่น (Switch or manage lists)"
       >
-        <ChevronLeft :size="14" />
-        <span>[ BACK TO ALL LISTS ]</span>
+        <Folder :size="12" />
+        <span>[ 📁 SWITCH LIST / สลับรายการ ]</span>
       </button>
     </div>
 
@@ -94,6 +94,11 @@ const formattedDate = computed(() => {
         {{ isConnected ? 'API: ADONISJS 5 + POSTGRESQL (LIVE)' : 'API: CONNECTING TO BACKEND...' }}
       </span>
       <span v-if="isSyncing" class="sync-badge">SYNCING...</span>
+    </div>
+
+    <div v-if="isDetailView" class="receipt-guide-tip">
+      <span class="guide-tag">GUIDE</span>
+      <span class="guide-text">แตะ/คลิก [ ] เพื่อขีดฆ่า · แตะ ✏️ เพื่อแก้ไข</span>
     </div>
   </header>
 </template>
@@ -237,5 +242,57 @@ const formattedDate = computed(() => {
 @keyframes pulse {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.3; }
+}
+
+.receipt-guide-tip {
+  margin: 10px auto 2px;
+  padding: 4px 10px;
+  background: rgba(35, 86, 150, 0.06);
+  border: 1px dashed rgba(35, 86, 150, 0.28);
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: 'Space Mono', 'Courier Prime', monospace;
+  font-size: 11px;
+  color: #1e4579;
+  max-width: 96%;
+}
+
+.guide-tag {
+  background: #235696;
+  color: #fff;
+  font-size: 9px;
+  font-weight: 700;
+  padding: 1px 5px;
+  border-radius: 2px;
+  letter-spacing: 0.5px;
+  flex-shrink: 0;
+}
+
+.guide-text {
+  font-size: 11px;
+  line-height: 1.3;
+}
+
+@media (max-width: 640px), (pointer: coarse) {
+  .back-btn {
+    padding: 6px 12px;
+    font-size: 11.5px;
+    min-height: 38px;
+    background: rgba(0, 0, 0, 0.04);
+  }
+
+  .back-btn:active {
+    background: rgba(0, 0, 0, 0.12);
+    transform: scale(0.97);
+  }
+
+  .receipt-guide-tip {
+    font-size: 11px;
+    padding: 6px 10px;
+    line-height: 1.4;
+  }
 }
 </style>

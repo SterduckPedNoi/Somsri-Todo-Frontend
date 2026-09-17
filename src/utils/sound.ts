@@ -16,6 +16,16 @@ function getAudioContext(): AudioContext | null {
 
 let muted = false
 
+if (typeof window !== 'undefined') {
+  const unlockAudio = () => {
+    getAudioContext()
+    window.removeEventListener('touchstart', unlockAudio)
+    window.removeEventListener('click', unlockAudio)
+  }
+  window.addEventListener('touchstart', unlockAudio, { passive: true })
+  window.addEventListener('click', unlockAudio, { passive: true })
+}
+
 export const soundService = {
   isMuted() {
     return muted

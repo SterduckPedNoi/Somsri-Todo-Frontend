@@ -277,16 +277,41 @@ body {
 
 @media (max-width: 480px) {
   body {
-    padding: 10px 8px 30px;
+    padding: 8px 6px 30px;
     background-image: none;
     background-color: #0c0c0c;
   }
 
   .control-bar {
-    padding: 4px 6px 10px;
+    padding: 4px 4px 10px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .brand-badge {
+    font-size: 10px;
+  }
+
+  .control-actions {
+    gap: 6px;
+  }
+
+  .icon-btn {
+    padding: 6px 8px;
+    font-size: 10px;
   }
 
   .receipt-paper {
-    padding: 6px 3px 2px;
+    padding: 6px 4px 2px;
+  }
+
+  .checkbox-btn,
+  .action-btn,
+  .back-btn,
+  .cat-open-badge,
+  .filter-btn,
+  .add-btn {
+    user-select: none;
+    -webkit-user-select: none;
   }
 }

@@ -42,7 +42,7 @@ const submit = () => {
         ref="inputRef"
         v-model="title"
         type="text"
-        placeholder="write here..."
+        placeholder="พิมพ์รายการใหม่ที่นี่... (กด Enter หรือคลิก ADD)"
         class="receipt-input-field"
         @keydown="handleKeydown"
         maxlength="200"
@@ -54,7 +54,7 @@ const submit = () => {
         @click="submit"
         :disabled="!title.trim() || isSubmitting"
         type="button"
-        title="Add to receipt (Enter)"
+        title="เพิ่มรายการลงใบเสร็จ (Add to receipt / Enter)"
       >
         <Plus :size="14" />
         <span class="btn-text">ADD</span>
@@ -140,5 +140,33 @@ const submit = () => {
 
 .btn-text {
   letter-spacing: 0.5px;
+}
+
+@media (max-width: 640px), (pointer: coarse) {
+  .receipt-input-container {
+    padding: 6px 4px 12px;
+  }
+
+  .receipt-input-row {
+    padding: 6px 8px;
+    gap: 6px;
+  }
+
+  .receipt-input-field {
+    font-size: 16px !important;
+    min-height: 40px;
+  }
+
+  .add-btn {
+    min-height: 40px;
+    padding: 8px 14px;
+    font-size: 12px;
+    border-radius: 4px;
+  }
+
+  .add-btn:active:not(:disabled) {
+    background: #333;
+    transform: scale(0.95);
+  }
 }
 </style>

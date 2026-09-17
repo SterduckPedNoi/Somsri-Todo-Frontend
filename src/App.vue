@@ -11,7 +11,7 @@ import SawtoothEdge from './components/SawtoothEdge.vue'
 import ReceiptCategoryList from './components/ReceiptCategoryList.vue'
 import { Volume2, VolumeX, RotateCw, Globe, CheckSquare, Triangle, Folder } from 'lucide-vue-next'
 
-const currentView = ref<'list' | 'categories'>('categories')
+const currentView = ref<'list' | 'categories'>('list')
 const categories = ref<Category[]>([])
 const activeCategoryId = ref<number | null>(null)
 const todos = ref<Todo[]>([])
@@ -53,6 +53,11 @@ const loadInitialData = async () => {
     isConnected.value = isHealthy
 
     await loadCategories()
+
+    if (activeCategoryId.value) {
+      const data = await api.getTodos(activeCategoryId.value, 'all')
+      todos.value = data
+    }
     isConnected.value = true
   } catch (err: any) {
     isConnected.value = false
@@ -349,6 +354,16 @@ onUnmounted(() => {
         >
           <Folder :size="12" />
           <span>ALL LISTS ({{ categories.length }})</span>
+        </button>
+        <button 
+          v-else
+          class="icon-btn"
+          @click="currentView = 'list'"
+          title="Back to current list"
+          type="button"
+        >
+          <CheckSquare :size="12" />
+          <span>BACK TO TODO LIST</span>
         </button>
 
         <button 

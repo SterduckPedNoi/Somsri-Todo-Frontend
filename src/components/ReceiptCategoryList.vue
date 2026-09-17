@@ -86,12 +86,15 @@ const onEditKeydown = (e: KeyboardEvent, id: number) => {
         class="category-row"
       >
         <template v-if="editingId !== cat.id">
-          <div class="cat-clickable" @click="emit('selectCategory', cat.id)">
-            <span class="cat-bracket">[</span>
-            <span class="cat-arrow">
-              <ArrowRight :size="12" />
+          <div 
+            class="cat-clickable" 
+            @click="emit('selectCategory', cat.id)"
+            title="คลิกเพื่อเปิดดูรายการงานนี้ (Click to open this list)"
+          >
+            <span class="cat-open-badge">
+              <ArrowRight :size="11" />
+              <span>OPEN</span>
             </span>
-            <span class="cat-bracket">]</span>
 
             <span class="cat-name">{{ cat.name }}</span>
 
@@ -150,7 +153,7 @@ const onEditKeydown = (e: KeyboardEvent, id: number) => {
           ref="inputRef"
           v-model="newListName"
           type="text"
-          placeholder="create new list..."
+          placeholder="พิมพ์ชื่อรายการใหม่ที่นี่... (กด Enter เพื่อสร้าง)"
           class="new-cat-field"
           @keydown="handleKeydown"
           maxlength="40"
@@ -219,15 +222,28 @@ const onEditKeydown = (e: KeyboardEvent, id: number) => {
   min-width: 0;
 }
 
-.cat-bracket {
-  color: #444;
-  font-weight: 700;
-}
-
-.cat-arrow {
+.cat-open-badge {
   display: inline-flex;
   align-items: center;
+  gap: 3px;
+  background: rgba(0, 0, 0, 0.07);
+  border: 1px dashed rgba(0, 0, 0, 0.3);
+  padding: 1px 6px;
+  border-radius: 3px;
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  font-weight: 700;
   color: #111;
+  letter-spacing: 0.5px;
+  transition: all 0.15s ease;
+  flex-shrink: 0;
+}
+
+.category-row:hover .cat-open-badge {
+  background: #111;
+  color: #fff;
+  border-color: #111;
+  transform: translateX(2px);
 }
 
 .cat-name {
@@ -249,7 +265,7 @@ const onEditKeydown = (e: KeyboardEvent, id: number) => {
   display: flex;
   align-items: center;
   gap: 4px;
-  opacity: 0;
+  opacity: 0.4;
   transition: opacity 0.15s ease;
   flex-shrink: 0;
 }
@@ -380,5 +396,52 @@ const onEditKeydown = (e: KeyboardEvent, id: number) => {
 .add-list-btn:disabled {
   opacity: 0.35;
   cursor: not-allowed;
+}
+
+@media (max-width: 640px), (pointer: coarse) {
+  .category-row {
+    padding: 10px 6px;
+    gap: 8px;
+  }
+
+  .cat-open-badge {
+    padding: 5px 9px;
+    font-size: 11px;
+  }
+
+  .cat-actions {
+    opacity: 1 !important;
+    gap: 6px;
+  }
+
+  .cat-action-btn {
+    min-width: 36px;
+    min-height: 36px;
+    padding: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 4px;
+    background: rgba(0, 0, 0, 0.03);
+    color: #333;
+  }
+
+  .cat-action-btn:active {
+    background: rgba(0, 0, 0, 0.14);
+    transform: scale(0.92);
+  }
+
+  .new-category-row {
+    padding: 6px 8px;
+  }
+
+  .new-cat-field {
+    min-height: 40px;
+    font-size: 16px !important;
+  }
+
+  .add-list-btn {
+    min-height: 40px;
+    padding: 8px 14px;
+    font-size: 12px;
+  }
 }
 </style>
