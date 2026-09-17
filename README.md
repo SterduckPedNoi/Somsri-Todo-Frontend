@@ -34,8 +34,7 @@
 ## 📸 ภาพตัวอย่างระบบ (Preview)
 
 <div align="center">
-  <!-- นำรูปภาพ screenshot มาใส่ตรงนี้ หรือลากไฟล์รูปมาวางในช่องแก้ไขของ GitHub ได้โดยตรง -->
-  <img src="[https://via.placeholder.com/800x450.png?text=Preview+THE+DAILY+RUN+To+Do+Receipt](https://github.com/SterduckPedNoi/Somsri-Todo-Frontend/blob/main/Screenshot%202569-09-18%20at%2000.33.29.png)" alt="App Preview" width="80%" />
+  <img src="https://raw.githubusercontent.com/SterduckPedNoi/Somsri-Todo-Frontend/main/Screenshot%202569-09-18%20at%2000.33.29.png" alt="App Preview" width="80%" />
 </div>
 
 ---
