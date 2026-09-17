@@ -66,3 +66,6 @@ npm run dev
 npm run build
 ```
 ไฟล์ Production จะถูกสร้างไว้ในโฟลเดอร์ `dist/`
+
+### ลิ้งค์สำหรับดูหน้าเว็บเบื้องต้น (รอเชื่อม backend 1-2 นาที)
+https://somsri-todo-frontend.vercel.app/
