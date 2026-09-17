@@ -19,7 +19,7 @@
   <br />
   <br />
 
-  [🌐 ชมเว็บไซต์ตัวอย่าง (Live Demo)](https://somsri-todo-frontend.vercel.app/) • [⚡ รายงานปัญหา (Report Bug)](https://github.com/SterduckPedNoi)
+  [🌐 ชมเว็บไซต์ตัวอย่าง (Live Demo)](https://somsri-todo-frontend.vercel.app/) • [⚡ รายงานปัญหา (Report Bug)](https://github.com/SterduckPedNoi/Somsri-Todo-Frontend/issues)
 
 </div>
 
@@ -35,7 +35,7 @@
 
 <div align="center">
   <!-- นำรูปภาพ screenshot มาใส่ตรงนี้ หรือลากไฟล์รูปมาวางในช่องแก้ไขของ GitHub ได้โดยตรง -->
-  <img src="https://via.placeholder.com/800x450.png?text=Preview+THE+DAILY+RUN+To+Do+Receipt" alt="App Preview" width="80%" />
+  <img src="[https://via.placeholder.com/800x450.png?text=Preview+THE+DAILY+RUN+To+Do+Receipt](https://github.com/SterduckPedNoi/Somsri-Todo-Frontend/blob/main/Screenshot%202569-09-18%20at%2000.33.29.png)" alt="App Preview" width="80%" />
 </div>
 
 ---
