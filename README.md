@@ -1,71 +1,101 @@
-# THE DAILY RUN · To Do Receipt (Vue 3 + TypeScript)
+<div align="center">
 
-เว็บแอปพลิเคชันจัดการ Todo List สไตล์ **ใบเสร็จกระดาษวินเทจมินิมอล (To Do Receipt: THE DAILY RUN)** ออกแบบตามรูปภาพตัวอย่าง พัฒนาด้วย **Vue.js 3 (Composition API + `<script setup lang="ts">`)** และ **TypeScript** พร้อมการเชื่อมต่อกับ **AdonisJS 5 RESTful API Server** แบบ Real-time Persistence
+  # 🧾 THE DAILY RUN · To Do Receipt
+  
+  **A Vintage Minimalist Receipt-Style Task Management Web Application**  
+  เว็บแอปพลิเคชันจัดการ Todo List สไตล์ **ใบเสร็จกระดาษวินเทจมินิมอล** ผสานสัมผัสและเสียงแบบอะนาล็อก  
+  พัฒนาด้วย **Vue 3 (Composition API) + TypeScript** เชื่อมต่อกับ **AdonisJS 5 RESTful API**
+
+  <br />
+
+  <!-- Tech Stack Badges -->
+  [![Vue 3](https://img.shields.io/badge/Vue.js%203-4FC08D?style=for-the-badge&logo=vuedotjs&logoColor=white)](https://vuejs.org/)
+  [![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+  [![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
+  [![AdonisJS 5](https://img.shields.io/badge/AdonisJS%205-5A45FF?style=for-the-badge&logo=adonisjs&logoColor=white)](https://adonisjs.com/)
+  [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)](https://www.postgresql.org/)
+  [![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://vercel.com/)
+
+  <br />
+  <br />
+
+  [🌐 ชมเว็บไซต์ตัวอย่าง (Live Demo)](https://somsri-todo-frontend.vercel.app/) • [⚡ รายงานปัญหา (Report Bug)](https://github.com/your-username/your-repo/issues)
+
+</div>
+
+---
+
+> [!NOTE]  
+> **คำแนะนำสำหรับการทดสอบผ่าน Live Demo:**  
+> เซิร์ฟเวอร์ API หลังบ้าน (AdonisJS บน Free Tier) มีระบบพักการทำงานชั่วคราวเมื่อไม่มีทราฟฟิก (Cold Start) หากเปิดใช้งานครั้งแรก **ระบบอาจใช้เวลาเชื่อมต่อประมาณ 1–2 นาที** ในการโหลดและซิงก์ข้อมูลงานเดิมขึ้นมาครับ
+
+---
+
+## 📸 ภาพตัวอย่างระบบ (Preview)
+
+<div align="center">
+  <!-- นำรูปภาพ screenshot มาใส่ตรงนี้ หรือลากไฟล์รูปมาวางในช่องแก้ไขของ GitHub ได้โดยตรง -->
+  <img src="https://via.placeholder.com/800x450.png?text=Preview+THE+DAILY+RUN+To+Do+Receipt" alt="App Preview" width="80%" />
+</div>
 
 ---
 
 ## 🎨 เอกลักษณ์และการออกแบบ (Design & Aesthetics)
-- **สไตล์ใบเสร็จสมจริง (Realistic Receipt Paper):**
-  - ขอบกระดาษฉีกซิกแซกแบบ Perforated / Sawtooth Cut ทั้งด้านบนและด้านล่าง
-  - Texture กระดาษออฟไวท์พร้อมรอยพับ รอยยับ และแสงเงาสมจริง
-  - ฟอนต์ Typewriter / Monospace สไตล์เครื่องพิมพ์ใบเสร็จคมชัด
-- **เอฟเฟกต์ปากกาลูกลื่นขีดฆ่า (Ballpoint Pen Strike Effect):**
-  - เมื่อทำเครื่องหมายเสร็จสิ้น `[x]` จะมีเส้นหมึกปากกาลูกลื่นสีน้ำเงินขีดฆ่าผ่านข้อความเสมือนจริงตามรูปตัวอย่าง
-- **เสียงสัมผัสเสมือนจริง (Tactile Audio):**
-  - สังเคราะห์เสียงพิมพ์ดีด (Typewriter click), เสียงขีดปากกา (Pen scribble), และเสียงฉีกกระดาษ (Paper tear) ด้วย **Web Audio API** โดยไม่ต้องโหลดไฟล์เสียงภายนอก พร้อมปุ่มเปิด/ปิดเสียง (Mute Toggle)
-- **Responsive 100%:**
-  - รองรับทั้งบนมือถือ (Mobile View) และหน้าจอคอมพิวเตอร์ (Desktop View)
-- **แถบเมนูด้านล่าง:**
-  - สัญลักษณ์ `Productivity · To Do Receipt` ตามภาพตัวอย่างต้นแบบ
+
+โปรเจกต์นี้ให้ความสำคัญกับ **Micro-interactions** และ **Sensory Experience** เพื่อเปลี่ยนการจดบันทึกงานทั่วไปให้รู้สึกเหมือนกำลังใช้งานกระดาษใบเสร็จจริง:
+
+* 📜 **Realistic Receipt Paper Texture:**
+  * ขอบกระดาษฉีกซิกแซก (Perforated / Sawtooth Cut) สมจริงทั้งหัวและท้ายกระดาษ
+  * โทนสีกระดาษออฟไวท์พร้อมจำลองรอยพับ มิติแสงเงา และฟอนต์ Monospace สไตล์เครื่องพิมพ์ใบเสร็จความร้อน
+* 🖊️ **Ballpoint Pen Strike Effect:**
+  * เมื่อทำเครื่องหมายเสร็จสิ้น `[x]` ระบบจะจำลองเส้นหมึกปากกาลูกลื่นสีน้ำเงินขีดฆ่าข้อความอย่างเป็นธรรมชาติ
+* 🔊 **Zero-Asset Tactile Audio (Web Audio API):**
+  * สังเคราะห์คลื่นเสียงในเบราว์เซอร์โดยตรงด้วย **Web Audio API** โดยไม่ต้องโหลดไฟล์ `.mp3` หรือ `.wav` จากภายนอก
+  * ให้เสียงพิมพ์ดีด (Typewriter Click), เสียงตวัดปากกา (Pen Scribble), และเสียงฉีกกระดาษ (Paper Tear)
+  * มีสวิตช์เปิด/ปิดเสียง (Mute Toggle) ควบคุมได้อิสระ
+* 📱 **Full Responsiveness:**
+  * ออกแบบ UI ให้สวยงามสมบูรณ์แบบทั้งบนมือถือ (Mobile View) และหน้าจอคอมพิวเตอร์ (Desktop View)
 
 ---
 
-## 🚀 ฟังก์ชันการทำงาน (Features)
-1. **เพิ่มรายการ Todo:** พิมพ์ในแถว `[ ] write here...` และกด Enter หรือปุ่ม ADD เพื่อบันทึกไปยัง API Server ทันที
-2. **แก้ไขรายการ:** ดับเบิลคลิกที่ข้อความ หรือกดไอคอนดินสอ เพื่อแก้ไขชื่อรายการ Todo แบบ Inline
-3. **ทำเครื่องหมายเสร็จสิ้น:** คลิกที่ `[ ]` หรือคลิกที่ตัวหนังสือเพื่อสลับสถานะเป็น `[x]` พร้อมขีดเส้นปากกาสีน้ำเงิน
-4. **ลบรายการ Todo:** คลิกไอคอนถังขยะ เพื่อลบรายการออกจากฐานข้อมูล
-5. **กรองรายการ (Filters):** เลือกดู `[ ALL ]`, `[ ACTIVE ]`, หรือ `[ DONE ]`
-6. **ล้างรายการที่เสร็จแล้ว (Clear Completed):** ลบรายการที่ทำเสร็จแล้วทั้งหมดในคลิกเดียว
-7. **สถานะการเชื่อมต่อ:** มี Badge แสดงสถานะการเชื่อมต่อกับ AdonisJS 5 + PostgreSQL แบบเรียลไทม์
+## ✨ ฟังก์ชันการทำงาน (Key Features)
+
+| ฟีเจอร์ | คำอธิบาย |
+| :--- | :--- |
+| **Quick Add** | พิมพ์รายการใหม่ในช่อง `[ ] write here...` แล้วกด `Enter` หรือปุ่ม Add เพื่อบันทึกทันที |
+| **Inline Editing** | ดับเบิลคลิกที่ข้อความ หรือกดไอคอนดินสอ เพื่อแก้ไขชื่องานแบบ In-place ได้ทันที |
+| **Task Toggle** | คลิกที่กล่องเครื่องหมายหรือตัวหนังสือเพื่อสลับสถานะ `[ ]` / `[x]` พร้อมเอฟเฟกต์ปากกาขีดฆ่า |
+| **Instant Delete** | ลบรายการออกจากฐานข้อมูลผ่านไอคอนถังขยะ |
+| **Category Filters** | กรองมุมมองงานได้อย่างรวดเร็ว: `[ ALL ]`, `[ ACTIVE ]`, หรือ `[ DONE ]` |
+| **Batch Cleanup** | ฟังก์ชัน `Clear Completed` ล้างรายการที่ทำเสร็จแล้วทั้งหมดในคลิกเดียว |
+| **Real-time Status** | มี Connection Badge ตรวจสอบสถานะการเชื่อมต่อระหว่าง Frontend กับ AdonisJS + PostgreSQL |
 
 ---
 
-## 🛠 Tech Stack
-- **Framework:** Vue.js 3.5+ (Composition API + `<script setup>`)
-- **Language:** TypeScript 5.x
-- **Build Tool:** Vite 6.x
-- **Icons:** Lucide Vue Next
-- **Audio:** Web Audio API (Zero external assets)
+## 🛠️ สถาปัตยกรรมและเทคโนโลยี (Tech Stack)
+
+### **Frontend Client**
+* **Framework:** Vue.js 3.5+ (Composition API + `<script setup lang="ts">`)
+* **Type System:** TypeScript 5.x
+* **Build Tool:** Vite 6.x
+* **Icons:** Lucide Vue Next
+* **Sound Engine:** Web Audio API (Native Browser Synthesis)
+* **Deployment:** Vercel
+
+### **Backend & Database**
+* **Server Framework:** AdonisJS 5 (Node.js MVC / RESTful API)
+* **Database:** PostgreSQL
+* **ORM:** Lucid ORM (Data Modeling & Migrations)
 
 ---
 
-## ⚙️ การติดตั้งและรันโปรเจกต์ (Local Setup)
+## 🚀 วิธีการติดตั้งและรันในเครื่อง (Local Setup)
 
-### 1. ติดตั้ง Dependencies
+### สิ่งที่ต้องเตรียม (Prerequisites)
+* Node.js (v18.x ขึ้นไป)
+* Git
+
+### 1. โคลน Repository
 ```bash
-cd frontend
-npm install
-```
-
-### 2. กำหนดค่า Environment Variables (`.env`)
-หากเซิร์ฟเวอร์ Backend รันอยู่ที่พอร์ตอื่น สามารถตั้งค่าใน `.env` ได้:
-```env
-VITE_API_BASE_URL=http://127.0.0.1:3333/api
-```
-*(ค่าเริ่มต้นเชื่อมต่อไปยัง `http://127.0.0.1:3333/api` โดยอัตโนมัติ)*
-
-### 3. รัน Dev Server
-```bash
-npm run dev
-```
-เปิดเว็บเบราว์เซอร์ที่: `http://localhost:5173/`
-
-### 4. Build สำหรับ Production
-```bash
-npm run build
-```
-ไฟล์ Production จะถูกสร้างไว้ในโฟลเดอร์ `dist/`
-
-### ลิ้งค์สำหรับดูหน้าเว็บเบื้องต้น (รอเชื่อม backend 1-2 นาที)
-https://somsri-todo-frontend.vercel.app/
+git clone [https://github.com/your-username/somsri-todo-frontend.git](https://github.com/your-username/somsri-todo-frontend.git)
+cd somsri-todo-frontend
